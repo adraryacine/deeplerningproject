@@ -1,0 +1,174 @@
+{
+  "config": {
+    "dataset_path": null,
+    "sequence_length": 14,
+    "batch_size": 32,
+    "epochs": 40,
+    "learning_rate": 0.001,
+    "train_ratio": 0.7,
+    "val_ratio": 0.15,
+    "test_ratio": 0.15,
+    "random_seed": 42
+  },
+  "schema": {
+    "date_column": "Date",
+    "group_column": "City",
+    "target_column": "AQI",
+    "task_type": "regression",
+    "classification_target": "AQI_Bucket",
+    "numeric_features": [
+      "PM2.5",
+      "PM10",
+      "NO",
+      "NO2",
+      "NOx",
+      "NH3",
+      "CO",
+      "SO2",
+      "O3",
+      "Benzene",
+      "Toluene",
+      "Xylene"
+    ],
+    "categorical_features": [
+      "City"
+    ],
+    "pollutant_columns": [
+      "PM2.5",
+      "PM10",
+      "NO",
+      "NO2",
+      "NOx",
+      "NH3",
+      "CO",
+      "SO2",
+      "O3",
+      "Benzene",
+      "Toluene",
+      "Xylene"
+    ],
+    "target_reason": "La colonne 'AQI' est numerique et correspond directement a l'indice de qualite de l'air. Elle est donc prioritaire comme cible principale."
+  },
+  "inspection": {
+    "shape": [
+      29531,
+      16
+    ],
+    "columns": [
+      "City",
+      "Date",
+      "PM2.5",
+      "PM10",
+      "NO",
+      "NO2",
+      "NOx",
+      "NH3",
+      "CO",
+      "SO2",
+      "O3",
+      "Benzene",
+      "Toluene",
+      "Xylene",
+      "AQI",
+      "AQI_Bucket"
+    ],
+    "dtypes": {
+      "City": "str",
+      "Date": "str",
+      "PM2.5": "float64",
+      "PM10": "float64",
+      "NO": "float64",
+      "NO2": "float64",
+      "NOx": "float64",
+      "NH3": "float64",
+      "CO": "float64",
+      "SO2": "float64",
+      "O3": "float64",
+      "Benzene": "float64",
+      "Toluene": "float64",
+      "Xylene": "float64",
+      "AQI": "float64",
+      "AQI_Bucket": "str"
+    },
+    "missing_values": {
+      "Xylene": 18109,
+      "PM10": 11140,
+      "NH3": 10328,
+      "Toluene": 8041,
+      "Benzene": 5623,
+      "AQI": 4681,
+      "AQI_Bucket": 4681,
+      "PM2.5": 4598,
+      "NOx": 4185,
+      "O3": 4022,
+      "SO2": 3854,
+      "NO2": 3585,
+      "NO": 3582,
+      "CO": 2059,
+      "Date": 0,
+      "City": 0
+    },
+    "duplicate_rows": 0,
+    "target_column": "AQI",
+    "task_type": "regression",
+    "date_column": "Date",
+    "group_column": "City",
+    "classification_target": "AQI_Bucket"
+  },
+  "cleaned_shape": [
+    24850,
+    24
+  ],
+  "split_shapes": {
+    "train": [
+      12446,
+      24
+    ],
+    "validation": [
+      5429,
+      24
+    ],
+    "test": [
+      6975,
+      24
+    ]
+  },
+  "sequence_shapes": {
+    "train": [
+      12194,
+      14,
+      38
+    ],
+    "validation": [
+      5143,
+      14,
+      38
+    ],
+    "test": [
+      6611,
+      14,
+      38
+    ]
+  },
+  "results": [
+    {
+      "model": "LSTM",
+      "MAE": 25.770612716674805,
+      "RMSE": 43.909680693370454,
+      "R2": 0.8264040946960449
+    },
+    {
+      "model": "GRU",
+      "MAE": 27.11204719543457,
+      "RMSE": 44.390998986456985,
+      "R2": 0.8225774765014648
+    },
+    {
+      "model": "MLP",
+      "MAE": 33.11277770996094,
+      "RMSE": 60.70489460097616,
+      "R2": 0.6682077646255493
+    }
+  ],
+  "best_model": "lstm"
+}
